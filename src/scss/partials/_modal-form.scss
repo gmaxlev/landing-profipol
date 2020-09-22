@@ -1,0 +1,14 @@
+.modal-form {
+}
+.modal-form__input {
+  margin-bottom: 20px;
+  .input-text {
+    width: 100%;
+  }
+}
+.modal-form__act {
+  margin-top: 60px;
+  @include media-breakpoint-down(xs) {
+    text-align: center;
+  }
+}

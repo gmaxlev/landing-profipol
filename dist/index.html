@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Title</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="vendor/animate.min.css" />
+    <link rel="stylesheet" href="vendor/fancybox/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="vendor/swiper/swiper.min.css" />
+    <script src="vendor/jquery.min.js"></script>
+    <script src="vendor/jquery.validate.min.js"></script>
+    <script src="vendor/axios.min.js"></script>
+    <script src="vendor/jquery.mask.min.js"></script>
+    <script src="vendor/wow.min.js"></script>
+    <script src="vendor/fancybox/jquery.fancybox.min.js"></script>
+    <script src="vendor/swiper/swiper.min.js"></script><!-- ===================-->
+    <!-- LOADING SVG SPRITES-->
+    <!-- ===================-->
+    <script>
+        $(document).ready(function() {
+            var req = new XMLHttpRequest();
+            req.onload = function(e) {
+                var svg = document.implementation.createHTMLDocument('');
+                svg.body.innerHTML = e.target.response.replace('<svg ', '<svg style="display: none"');
+                document.body.appendChild(svg.body.firstElementChild);
+                svg = null;
+            };
+            req.open('GET', './img/sprite.defs.svg', true);
+            req.responseType = 'text';
+            req.send();
+        });
+    </script><!-- =======================-->
+    <!-- END LOADING SVG SPRITES-->
+    <!-- =======================-->
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- =================-->
+        <!-- МОДАЛЬНАЯ ФОРМА 1-->
+        <!-- =================-->
+        <div class="modal" data-is-modal="data-is-modal" id="modal-1">
+            <div class="modal__window">
+                <div class="modal__content">
+                    <div class="modal-window"><img class="modal-window__decor" src="img/decor2.png" alt="" />
+                        <div class="modal-window__content">
+                            <div class="modal-window__header">Связаться с нами</div>
+                            <div class="modal-window__subheader">Заполните, пожалуйста, ваши данные и наш менеджер свяжется с вами в ближайшее время</div>
+                            <form class="modal-form" data-form-type="1" name="Форма №1">
+                                <div class="modal-form__input">
+                                    <div class="input-text"><input type="text" name="name" placeholder="Ваше имя" /></div>
+                                </div>
+                                <div class="modal-form__input">
+                                    <div class="input-text"><input class="phone-mask" type="text" name="phone" placeholder="Ваш номер телефона" /></div>
+                                </div>
+                                <div class="modal-form__input">
+                                    <div class="input-text"><input type="text" name="email" placeholder="Ваш e-mail" /></div>
+                                </div>
+                                <div class="modal-form__act"><button class="button button_c">Позвонить мне</button></div>
+                                <div class="form-send-error"><svg class="svg-sprite">
+                                        <use xlink:href="#svgsprite_error"></use>
+                                    </svg><span>Ошибка. Не удалось отправить данные. <br><span class="form-send-error__text"></span></span></div>
+                                <div class="form-send-success"><svg class="svg-sprite">
+                                        <use xlink:href="#svgsprite_phone"></use>
+                                    </svg><span>Спасибо!<br> Ожидайте наш звонок.</span>
+                                    <div class="form-send-success__params"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-window__close" data-modal-close="data-modal-close"><svg class="svg-sprite">
+                            <use xlink:href="#svgsprite_close"></use>
+                        </svg></div>
+                </div>
+            </div>
+        </div><!-- =====================-->
+        <!-- END МОДАЛЬНАЯ ФОРМА 2-->
+        <!-- =====================-->
+        <div class="intro">
+            <div class="container container_rel">
+                <div class="lines"><span></span><span></span><span></span><span></span><span></span></div>
+                <div class="intro__content">
+                    <header class="header wow fadeInDown" data-wow-delay="1.3s">
+                        <div class="header__img"><img src="img/logo.png" alt="" /></div>
+                        <div class="header__content">
+                            <div class="header__messengers"><a href=""><svg class="svg-sprite">
+                                        <use xlink:href="#svgsprite_viber"></use>
+                                    </svg></a><a href=""><svg class="svg-sprite">
+                                        <use xlink:href="#svgsprite_telegram_app"></use>
+                                    </svg></a></div>
+                            <div class="header__r">
+                                <div class="header__contacts"><a class="header__tel" href="tel:0955773707">(095) 577-37-07</a>
+                                    <div class="header__address">г. Харьков, проспект Победы 62 В, офис 1</div>
+                                </div>
+                                <div class="header__act"><button class="button button_a" data-modal="modal-1">Позвоните нам</button></div>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="welcome">
+                        <h1 class="welcome__header wow fadeInUp" data-wow-delay="0.5s">Полусухая механизированная стяжка</h1>
+                        <p class="welcome__subheader wow fadeInUp" data-wow-delay="0.7s">с гарантией до 5 лет от 255 грн/м2 <span>(от 100 м2)</span></p>
+                    </div>
+                    <div class="steps">
+                        <div class="steps__item wow fadeInUp" data-wow-delay="0.8s">
+                            <div class="steps__num">1</div>
+                            <div class="steps__text">Подбираем оптимальную толщину и технологию</div>
+                        </div>
+                        <div class="steps__item wow fadeInUp" data-wow-delay="0.9s">
+                            <div class="steps__num">2</div>
+                            <div class="steps__text">До 250 м2 в день, начало работ в течение 24 часов после замера</div>
+                        </div>
+                        <div class="steps__item wow fadeInUp" data-wow-delay="1s">
+                            <div class="steps__num">3</div>
+                            <div class="steps__text">Гарантия от 1 до 5 лет. Устраняем дефекты за свой счет</div>
+                        </div>
+                    </div>
+                    <div class="intro__fsw wow fadeInUp" data-wow-delay="1.1s">Мы гордимся нашей работой. Работайте с профессионалами</div>
+                    <div class="intro__acts wow fadeInUp" data-wow-delay="1.2s"><button class="button button_b" data-modal="modal-1">Рассчитать стоимость</button><button class="button button_c" data-modal="modal-1">Заказать замер</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="motiv">
+                <div class="motiv__top">
+                    <div class="motiv__decor"><img src="img/decor.png" alt="" /></div>
+                    <h2 class="motiv__header wow fadeInUp" data-wow-delay="0.1s">Рассчитайте стоимость работ за 2 минуты</h2>
+                    <p class="motiv__comment wow fadeInUp" data-wow-delay="0.2s">Вы многого не знаете об устройстве стяжки. Мы подберем оптимальную толщину и технологию укладки с учетом всех особенностей объекта:</p>
+                    <div class="motiv__params">
+                        <div class="motiv__param wow fadeInUp" data-wow-delay="0.3s">Качество основания</div>
+                        <div class="motiv__param wow fadeInUp" data-wow-delay="0.4s">Требования по прочности и ровност</div>
+                        <div class="motiv__param wow fadeInUp" data-wow-delay="0.5s">Бюджет на проведение работ</div>
+                    </div>
+                </div>
+                <div class="motiv__bottom wow fadeInDown" data-wow-delay="0.1s">
+                    <div class="motiv__bcontent">
+                        <div class="motiv__c1">Ответьте на 5 вопросов в удобном мессенджере</div>
+                        <div class="motiv__c2">и получите актуальную стоимость с обоснованием расчета</div>
+                    </div>
+                    <div class="motiv__bmess"><img src="img/red_arrow_PNG6.png" alt="" /><a href="" style="background-color: #ae44bb"><svg class="svg-sprite">
+                                <use xlink:href="#svgsprite_viber"></use>
+                            </svg></a><a href="" style="background-color: #1fb0da"><svg class="svg-sprite">
+                                <use xlink:href="#svgsprite_telegram_app"></use>
+                            </svg></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="section">
+                <h2 class="section-header wow fadeInUp" data-wow-delay="0.1s">Если ровная стяжка без трещин - то только полусухая</h2>
+                <p class="section-subheader wow fadeInUp" data-wow-delay="0.2s">Просто приведем отличия от традиционного способа, чтобы вы поняли ее безальтернативность</p>
+                <div class="types">
+                    <div class="types__item wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="t1">
+                            <div class="t1__img"><img src="img/6-14.png" alt="" /></div>
+                            <div class="t1__content">
+                                <div class="t1_head">Мокрая стяжка</div>
+                                <ul class="t1__list">
+                                    <li>до 50м2</li>
+                                    <li>нужно</li>
+                                    <li>через 14 дней</li>
+                                    <li>через 72 часа</li>
+                                    <li>есть</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="types__item wow fadeInDown" data-wow-delay="0.2s">
+                        <div class="t2">
+                            <div class="t2__img"><img src="img/icons8_scales.png" alt="" /></div>
+                            <div class="t2__content">
+                                <ul class="t2__list">
+                                    <li>Максимальный объем работ в день</li>
+                                    <li>Дополнительное выравнивание</li>
+                                    <li>Дополнительное выравнивание</li>
+                                    <li>Можно ходить</li>
+                                    <li>Возможность затопления нижнего этажа</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="types__item wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="t3">
+                            <div class="t3__img"><img src="img/6-14.png" alt="" /></div>
+                            <div class="t3__content">
+                                <div class="t3_head">Сухая стяжка</div>
+                                <ul class="t3__list">
+                                    <li>до 250м2</li>
+                                    <li>не нужно</li>
+                                    <li>через 8 дней</li>
+                                    <li>через 12 часа</li>
+                                    <li>исключена</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section section-clients">
+            <div class="container container_bl">
+                <div class="lines"><span></span><span></span><span></span><span></span><span></span></div>
+                <div class="content">
+                    <h2 class="section-header section-header_w wow fadeInUp" data-wow-delay="0.1s">Кто обращается в ProfiPol?</h2>
+                    <p class="section-subheader section-subheader_w wow fadeInUp" data-wow-delay="0.2s">Каждый клиент получает в нашем лице решение проблем и партнера, на которого можно положиться</p>
+                    <div class="clients">
+                        <div class="clients__item">
+                            <div class="clients__top"><img class="wow zoomIn" src="img/100c3341ad8ab6a290e74be946d9ca5d3846b4cc.png" alt="" data-wow-delay="0.1s" />
+                                <div class="clients__title wow fadeInUp" data-wow-delay="0.2s">Застройщики, прорабы</div>
+                            </div>
+                            <div class="clients__bottom">
+                                <div class="clients__list">
+                                    <ul class="list-check">
+                                        <li class="wow fadeInUp" data-wow-delay="0.1s">экономия времени</li>
+                                        <li class="wow fadeInUp" data-wow-delay="0.2s">качественная работа с соблюдением всех сроков и гарантией</li>
+                                        <li class="wow fadeInUp" data-wow-delay="0.3s">выгодные условия для сотрудничества</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clients__item">
+                            <div class="clients__top"><img class="wow zoomIn" src="img/6RieltorRabota-rieltora-zaklyuchaetsya-v-soprovozhdenii-operatsij-s-nedvizhimostyu.png" alt="" data-wow-delay="0.2s" />
+                                <div class="clients__title wow fadeInUp" data-wow-delay="0.2s">Владельцы домов и квартир</div>
+                            </div>
+                            <div class="clients__bottom">
+                                <div class="clients__list">
+                                    <ul class="list-check">
+                                        <li class="wow fadeInUp" data-wow-delay="0.1s">ровная поверхность без трещин и неровностей</li>
+                                        <li class="wow fadeInUp" data-wow-delay="0.2s">аккуратная работа с обязательной уборкой</li>
+                                        <li class="wow fadeInUp" data-wow-delay="0.3s">профессиональная консультация по технологии работ</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clients__item">
+                            <div class="clients__top"><img class="wow zoomIn" src="img/business-person-png.png" alt="" data-wow-delay="0.3s" />
+                                <div class="clients__title wow fadeInUp" data-wow-delay="0.3s">Владельцы коммерции и нежилых помещений</div>
+                            </div>
+                            <div class="clients__bottom">
+                                <div class="clients__list">
+                                    <ul class="list-check">
+                                        <li class="wow fadeInUp" data-wow-delay="0.1s">решение под любой бюджет</li>
+                                        <li class="wow fadeInUp" data-wow-delay="0.2s">идеальное соотношение цена/качество</li>
+                                        <li class="wow fadeInUp" data-wow-delay="0.3s">гарантия длительной службы поверхности</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <h2 class="section-header wow fadeInUp" data-wow-delay="0.1s">Секреты качества ProfiPol</h2>
+                <p class="section-subheader wow fadeInUp" data-wow-delay="0.2s">Для нас стяжка - такой же важный элемент здания, как стены или плиты перекрытия</p>
+                <div class="secrets">
+                    <div class="secrets__d"><span></span><span></span></div>
+                    <div class="secrets__item wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="secrets__top">
+                            <div class="secrets__icon"><img src="img/icons8_calendar.png" alt="" /></div>
+                            <div class="secrets__title">17 лет опыта</div>
+                        </div>
+                        <div class="secrets__desc">Занимаемся полами с 2007 года. Последние 10 лет - стяжкой пола.</div>
+                    </div>
+                    <div class="secrets__item wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="secrets__top">
+                            <div class="secrets__icon"><img src="img/icons8_development_skill.png" alt="" /></div>
+                            <div class="secrets__title">Опытные мастера</div>
+                        </div>
+                        <div class="secrets__desc">Без вредных зависимостей, прошедшие внутренее обучение</div>
+                    </div>
+                    <div class="secrets__item wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="secrets__top">
+                            <div class="secrets__icon"><img src="img/icons8_gold_medal.png" alt="" /></div>
+                            <div class="secrets__title">Гарантия качества</div>
+                        </div>
+                        <div class="secrets__desc">В случае возникновения дефектов – устраняем в сжатые сроки за свой счет</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section section-objects section_pbnull">
+            <div class="container container_bl">
+                <div class="lines"><span></span><span></span><span></span><span></span><span></span></div>
+                <div class="content">
+                    <h2 class="section-header section-header_w wow fadeInUp" data-wow-delay="0.1s">Главный секрет - <br>прислушиваться к вам</h2>
+                    <p class="section-subheader section-subheader_w wow fadeInUp" data-wow-delay="0.2s">Под каждый объект мы подбираем оптимальный вид стяжки. <br>В отличие от других, которые делают одно и то же в гараже и частном доме</p>
+                    <div class="objects">
+                        <div class="objects__item">
+                            <div class="objects__title wow fadeInUp" data-wow-delay="0.1s">Тонкослойная</div>
+                            <div class="objects__bottom">
+                                <div class="objects__image wow zoomIn" style="background-image: url(img/0.png)" data-wow-delay="0.1s">
+                                    <div class="objects__size"><b>от</b><span>1 см</span></div>
+                                </div>
+                                <div class="objects__price wow fadeInUp" data-wow-delay="0.1s">250-290 грн</div>
+                            </div>
+                        </div>
+                        <div class="objects__item">
+                            <div class="objects__title wow fadeInUp" data-wow-delay="0.2s">Стандартная</div>
+                            <div class="objects__bottom">
+                                <div class="objects__image wow zoomIn" style="background-image: url(img/0.png)" data-wow-delay="0.2s">
+                                    <div class="objects__size"><span>5-10</span><b>см</b></div>
+                                </div>
+                                <div class="objects__price wow fadeInUp" data-wow-delay="0.2s">255-300 грн</div>
+                            </div>
+                        </div>
+                        <div class="objects__item">
+                            <div class="objects__title wow fadeInUp" data-wow-delay="0.3s">Премиум</div>
+                            <div class="objects__bottom">
+                                <div class="objects__image wow zoomIn" style="background-image: url(img/0.png)" data-wow-delay="0.3s">
+                                    <div class="objects__size"><span>5-10</span><b>см</b></div>
+                                </div>
+                                <div class="objects__price wow fadeInUp" data-wow-delay="0.3s">280-330 грн</div>
+                            </div>
+                        </div>
+                        <div class="objects__item">
+                            <div class="objects__title wow fadeInUp" data-wow-delay="0.4s">Премиум с гранотсевом</div>
+                            <div class="objects__bottom">
+                                <div class="objects__image wow zoomIn" style="background-image: url(img/0.png)" data-wow-delay="0.4s">
+                                    <div class="objects__size"><b>от</b><span>10 см</span></div>
+                                </div>
+                                <div class="objects__price wow fadeInUp" data-wow-delay="0.4s">300-350 грн</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="addworks-header wow fadeInUp" data-wow-delay="0.1s">Дополнительные работы</div>
+                    <div class="addworks">
+                        <div class="addworks__content">
+                            <ul class="list-check">
+                                <li class="wow fadeInUp" data-wow-delay="0.1s">Укладка армировочной сетки</li>
+                                <li class="wow fadeInUp" data-wow-delay="0.2s">Звукоизоляция изолоном</li>
+                                <li class="wow fadeInUp" data-wow-delay="0.3s">Утепление вспененным полистеролом</li>
+                            </ul>
+                            <ul class="list-check">
+                                <li class="wow fadeInUp" data-wow-delay="0.4s">Полимерное покрытие</li>
+                                <li class="wow fadeInUp" data-wow-delay="0.5s">Нивелир масса</li>
+                                <li class="wow fadeInUp" data-wow-delay="0.6s">А также укладка напольных покрытий <br><span>(ламинат, плитка, ковровое, линолеум)</span></li>
+                            </ul>
+                        </div>
+                        <div class="addworks__act wow fadeInUp" data-wow-delay="0.7s"><button class="button button_c" data-modal="modal-1">Заказать замер</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="motiv">
+                <div class="motiv__top">
+                    <div class="motiv__decor"><img src="img/decor.png" alt="" /></div>
+                    <h2 class="motiv__header wow fadeInUp" data-wow-delay="0.1s">Не знаете <br>какую стяжку выбрать?</h2>
+                    <p class="motiv__comment wow fadeInUp" data-wow-delay="0.2s">Без должного опыта это очень сложно. Мы подберем оптимальную толщину и технологию укладки с учетом всех особенностей объекта:</p>
+                    <div class="motiv__params">
+                        <div class="motiv__param wow fadeInUp" data-wow-delay="0.1s">Качество основания</div>
+                        <div class="motiv__param wow fadeInUp" data-wow-delay="0.2s">Требования по прочности и ровност</div>
+                        <div class="motiv__param wow fadeInUp" data-wow-delay="0.3s">Бюджет на проведение работ</div>
+                    </div>
+                </div>
+                <div class="motiv__bottom wow fadeInDown" data-wow-delay="0.1s">
+                    <div class="motiv__bcontent">
+                        <div class="motiv__c1">Ответьте на 5 вопросов в удобном мессенджере</div>
+                        <div class="motiv__c2">и получите актуальную стоимость с обоснованием расчета</div>
+                    </div>
+                    <div class="motiv__bmess"><img src="img/red_arrow_PNG6.png" alt="" /><a href="" style="background-color: #ae44bb"><svg class="svg-sprite">
+                                <use xlink:href="#svgsprite_viber"></use>
+                            </svg></a><a href="" style="background-color: #1fb0da"><svg class="svg-sprite">
+                                <use xlink:href="#svgsprite_telegram_app"></use>
+                            </svg></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <h2 class="section-header wow fadeInUp" data-wow-delay="0.1s">Так должна выглядеть стяжка</h2>
+                <p class="section-subheader wow fadeInUp" data-wow-delay="0.2s">Мы делаем поверхность идеально ровной - на нее можно ложить даже ламинат, без дополнительной подготовки!</p>
+                <div class="slider-objects wow fadeIn" data-wow-delay="0.1s">
+                    <div class="swiper-container" id="slider-objects">
+                        <div class="slider-objects__nav">
+                            <div><button class="nav nav_prev" id="slider-objects-prev"><svg class="svg-sprite">
+                                        <use xlink:href="#svgsprite_arrow_pointing_down"></use>
+                                    </svg></button></div>
+                            <div><button class="nav nav_next" id="slider-objects-next"><svg class="svg-sprite">
+                                        <use xlink:href="#svgsprite_arrow_pointing_down"></use>
+                                    </svg></button></div>
+                        </div>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="slider-objects__item" style="background-image: url(img/object.png)"><a class="playvideo" href="https://www.youtube.com/watch?v=6lzmVhWpVos" data-fancybox="gallery"></a></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slider-objects__item" style="background-image: url(img/object.png)"><a class="playvideo" href="https://www.youtube.com/watch?v=6lzmVhWpVos" data-fancybox="gallery"></a></div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="slider-objects__item" style="background-image: url(img/object.png)"><a class="playvideo" href="https://www.youtube.com/watch?v=6lzmVhWpVos" data-fancybox="gallery"></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-header-act"><button class="button button_c" data-modal="modal-1">Заказать замер</button></div>
+            </div>
+        </div>
+        <div class="section section-faq">
+            <div class="container container_bl">
+                <div class="lines"><span></span><span></span><span></span><span></span><span></span></div>
+                <div class="content">
+                    <h2 class="section-header section-header_w wow fadeInUp" data-wow-delay="0.1s">Ответы на ваши вопросы</h2>
+                    <p class="section-subheader section-subheader_w wow fadeInUp" data-wow-delay="0.2s">Вы всегда можете получить подробную консультацию в чате</p>
+                    <div class="faq-soc wow fadeInUp" data-wow-delay="0.3s"><a href="" style="background-color: #ae44bb"><svg class="svg-sprite">
+                                <use xlink:href="#svgsprite_viber"></use>
+                            </svg></a><a href="" style="background-color: #1fb0da"><svg class="svg-sprite">
+                                <use xlink:href="#svgsprite_telegram_app"></use>
+                            </svg></a></div>
+                    <div class="faq wow fadeIn" data-wow-delay="0.1s">
+                        <div class="swiper-container" id="slider-faq">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="faq__item">
+                                        <div class="faq__title">Когда вы сможете приехать?</div>
+                                        <div class="faq__about">Прораб с вами свяжется в течении часа. приедет к вам в удобное время</div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="faq__item">
+                                        <div class="faq__title">Когда вы сможете приступить к работе?</div>
+                                        <div class="faq__about">На следующий день после осмотра объекта прорабом, в зависимости от графика работ.</div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="faq__item">
+                                        <div class="faq__title">Когда можно продолжать выполнения работ на боъекте?</div>
+                                        <div class="faq__about">Прораб с вами свяжется в течении часа. приедет к вам в удобное время</div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="faq__item">
+                                        <div class="faq__title">Когда можно продолжать выполнения работ на боъекте?</div>
+                                        <div class="faq__about">Прораб с вами свяжется в течении часа. приедет к вам в удобное время</div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="faq__item">
+                                        <div class="faq__title">Когда вы сможете приступить к работе?</div>
+                                        <div class="faq__about">На следующий день после осмотра объекта прорабом, в зависимости от графика работ.</div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="faq__item">
+                                        <div class="faq__title">Когда вы сможете приехать?</div>
+                                        <div class="faq__about">Прораб с вами свяжется в течении часа. приедет к вам в удобное время</div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="faq__item">
+                                        <div class="faq__title">Когда вы сможете приехать?</div>
+                                        <div class="faq__about">Прораб с вами свяжется в течении часа. приедет к вам в удобное время</div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="faq__item">
+                                        <div class="faq__title">Когда вы сможете приступить к работе?</div>
+                                        <div class="faq__about">На следующий день после осмотра объекта прорабом, в зависимости от графика работ.</div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="faq__item">
+                                        <div class="faq__title">Когда можно продолжать выполнения работ на боъекте?</div>
+                                        <div class="faq__about">Прораб с вами свяжется в течении часа. приедет к вам в удобное время</div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="faq__item">
+                                        <div class="faq__title">Когда можно продолжать выполнения работ на боъекте?</div>
+                                        <div class="faq__about">Прораб с вами свяжется в течении часа. приедет к вам в удобное время</div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="faq__item">
+                                        <div class="faq__title">Когда вы сможете приступить к работе?</div>
+                                        <div class="faq__about">На следующий день после осмотра объекта прорабом, в зависимости от графика работ.</div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="faq__item">
+                                        <div class="faq__title">Когда вы сможете приехать?</div>
+                                        <div class="faq__about">Прораб с вами свяжется в течении часа. приедет к вам в удобное время</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-nav"><button class="nav nav_prev" id="slider-faq-prev"><svg class="svg-sprite">
+                                <use xlink:href="#svgsprite_arrow_pointing_down"></use>
+                            </svg></button><button class="nav nav_next" id="slider-faq-next"><svg class="svg-sprite">
+                                <use xlink:href="#svgsprite_arrow_pointing_down"></use>
+                            </svg></button></div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <h2 class="section-header wow fadeInUp" data-wow-delay="0.1s">Как мы работаем</h2>
+                <p class="section-subheader wow fadeInUp" data-wow-delay="0.2s">Вы всегда можете получить подробную консультацию в чате</p>
+                <div class="stepswork">
+                    <div class="stepswork__item wow fadeInLeft" data-wow-delay="0.1s">
+                        <div class="stepswork__num"><img src="img/1.png" alt="" /></div>
+                        <div class="stepswork__title"><span>Оставьте заявку</span></div>
+                        <div class="stepswork__desc">
+                            <div class="stepswork__t">Инженер свяжется с вами и уточнит все детали:</div>
+                            <ul class="list-check">
+                                <li>площадь всего помещения</li>
+                                <li>толщина стяжки</li>
+                                <li>наличие и толщина подстилающих слоев - пенопласта, полистиролбетона, пенобетона</li>
+                                <li>готовность всего помещения</li>
+                            </ul>
+                            <p>На момент укладки пола обязательно должны быть сделаны все скрытые работы - проложены сантехнические трубы и электрика</p>
+                        </div>
+                    </div>
+                    <div class="stepswork__item wow fadeInRight" data-wow-delay="0.1s">
+                        <div class="stepswork__num"><img src="img/2.png" alt="" /></div>
+                        <div class="stepswork__title"><span>Замер объекта</span></div>
+                        <div class="stepswork__desc">Инженер выезжает на объект и делает необходимые замеры: площадь рулеткой, а толщину - нивелиром</div>
+                    </div>
+                    <div class="stepswork__item wow fadeInLeft" data-wow-delay="0.1s">
+                        <div class="stepswork__num"><img src="img/3.png" alt="" /></div>
+                        <div class="stepswork__title"><span>Расчет стоимости</span></div>
+                        <div class="stepswork__desc">Обязательно подписываем договор и соблюдаем все сроки и указанный бюджет</div>
+                    </div>
+                    <div class="stepswork__item wow fadeInRight" data-wow-delay="0.1s">
+                        <div class="stepswork__num"><img src="img/4.png" alt="" /></div>
+                        <div class="stepswork__title"><span>Внесение аванса</span></div>
+                        <div class="stepswork__desc">В размере 100% от стоимости материалов</div>
+                    </div>
+                    <div class="stepswork__item wow fadeInLeft" data-wow-delay="0.1s">
+                        <div class="stepswork__num"><img src="img/5.png" alt="" /></div>
+                        <div class="stepswork__title"><span>Устройство стяжки</span></div>
+                        <div class="stepswork__desc">А также проведение остальных согласованных работ</div>
+                    </div>
+                    <div class="stepswork__item wow fadeInRight" data-wow-delay="0.1s">
+                        <div class="stepswork__num"><img src="img/6.png" alt="" /></div>
+                        <div class="stepswork__title"><span>Оплата работ</span></div>
+                        <div class="stepswork__desc">Оплата работ</div>
+                    </div>
+                </div>
+                <div class="stepswork-act"><button class="button button_c" data-modal="modal-1">Заказать размер</button></div>
+            </div>
+        </div>
+        <div class="section weare-section section_pbnull">
+            <div class="container container_bl">
+                <div class="lines"><span></span><span></span><span></span><span></span><span></span></div>
+                <div class="content">
+                    <h2 class="section-header section-header_w wow fadeInUp" data-wow-delay="0.1s">«Строители нового поколения»</h2>
+                    <p class="section-subheader section-subheader_w wow fadeInUp" data-wow-delay="0.2s">Так нас называют заказчики за ответственность, пунктуальность и отсутствие вредных привычек</p>
+                    <div class="weare">
+                        <div class="weare__item wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="weare__img"><img src="img/365a4a0d95bbd2b0977c82e2ea65897f0e26cde2.png" alt="" /></div>
+                            <div class="weare__name">Федор Дранищев</div>
+                            <div class="weare__prof">Директор</div>
+                        </div>
+                        <div class="weare__item wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="weare__img"><img src="img/smiling-face-confidence-post-asian-man-with-beard_39688-344.png" alt="" /></div>
+                            <div class="weare__name">Константин Егоров</div>
+                            <div class="weare__prof">Бухгалтер</div>
+                        </div>
+                        <div class="weare__item wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="weare__img"><img src="img/365a4a0d95bbd2b0977c82e2ea65897f0e26cde2.png" alt="" /></div>
+                            <div class="weare__name">Федор Дранищев</div>
+                            <div class="weare__prof">Директор</div>
+                        </div>
+                        <div class="weare__item wow fadeInUp" data-wow-delay="0.4s">
+                            <div class="weare__img"><img src="img/smiling-face-confidence-post-asian-man-with-beard_39688-344.png" alt="" /></div>
+                            <div class="weare__name">Константин Егоров</div>
+                            <div class="weare__prof">Бухгалтер</div>
+                        </div>
+                    </div>
+                    <div class="weare-slider-wrapper wow fadeIn" data-wow-delay="0.1s">
+                        <div class="weare-slider">
+                            <div class="weare-slider-nav">
+                                <div><button class="nav nav_prev" id="slider-we-prev"><svg class="svg-sprite">
+                                            <use xlink:href="#svgsprite_arrow_pointing_down"></use>
+                                        </svg></button></div>
+                                <div><button class="nav nav_next" id="slider-we-next"><svg class="svg-sprite">
+                                            <use xlink:href="#svgsprite_arrow_pointing_down"></use>
+                                        </svg></button></div>
+                            </div>
+                            <div class="swiper-container" id="slider-we">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="weare-slider__item">
+                                            <div class="weare-slider__iwp">
+                                                <div class="weare-slider__img"><img src="img/305e7d45f04e1b79-1024x682.jpg" alt="" /></div>
+                                                <div class="weare-slider__prof">Прораб</div>
+                                            </div>
+                                            <div class="weare-slider__about">
+                                                <div class="weare-slider__nwd">
+                                                    <div class="weare-slider__name">Александр</div>
+                                                    <div class="weare-slider__date"> <svg class="svg-sprite">
+                                                            <use xlink:href="#svgsprite_calendar"></use>
+                                                        </svg><span>24.07.20</span></div>
+                                                </div>
+                                                <p class="weare-slider__text">Приятно было работать с ребятами, сделали за один день 86 метров. Все как договаривались-сроки, цена, качество. Теперь смело рекомендую своим друзьям</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="weare-slider__item">
+                                            <div class="weare-slider__iwp">
+                                                <div class="weare-slider__img"><img src="img/305e7d45f04e1b79-1024x682.jpg" alt="" /></div>
+                                                <div class="weare-slider__prof">Прораб</div>
+                                            </div>
+                                            <div class="weare-slider__about">
+                                                <div class="weare-slider__nwd">
+                                                    <div class="weare-slider__name">Александр 2</div>
+                                                    <div class="weare-slider__date"> <svg class="svg-sprite">
+                                                            <use xlink:href="#svgsprite_calendar"></use>
+                                                        </svg><span>24.07.20</span></div>
+                                                </div>
+                                                <p class="weare-slider__text">Приятно было работать с ребятами, сделали за один день 86 метров. Все как договаривались-сроки, цена, качество. Теперь смело рекомендую своим друзьям</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="weare-slider__item">
+                                            <div class="weare-slider__iwp">
+                                                <div class="weare-slider__img"><img src="img/305e7d45f04e1b79-1024x682.jpg" alt="" /></div>
+                                                <div class="weare-slider__prof">Прораб</div>
+                                            </div>
+                                            <div class="weare-slider__about">
+                                                <div class="weare-slider__nwd">
+                                                    <div class="weare-slider__name">Александр 3</div>
+                                                    <div class="weare-slider__date"> <svg class="svg-sprite">
+                                                            <use xlink:href="#svgsprite_calendar"></use>
+                                                        </svg><span>24.07.20</span></div>
+                                                </div>
+                                                <p class="weare-slider__text">Приятно было работать с ребятами, сделали за один день 86 метров. Все как договаривались-сроки, цена, качество. Теперь смело рекомендую своим друзьям</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="weare-slider__item">
+                                            <div class="weare-slider__iwp">
+                                                <div class="weare-slider__img"><img src="img/305e7d45f04e1b79-1024x682.jpg" alt="" /></div>
+                                                <div class="weare-slider__prof">Прораб</div>
+                                            </div>
+                                            <div class="weare-slider__about">
+                                                <div class="weare-slider__nwd">
+                                                    <div class="weare-slider__name">Александр 4</div>
+                                                    <div class="weare-slider__date"> <svg class="svg-sprite">
+                                                            <use xlink:href="#svgsprite_calendar"></use>
+                                                        </svg><span>24.07.20</span></div>
+                                                </div>
+                                                <p class="weare-slider__text">Приятно было работать с ребятами, сделали за один день 86 метров. Все как договаривались-сроки, цена, качество. Теперь смело рекомендую своим друзьям</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="motiv motiv_accent">
+                <div class="motiv__top">
+                    <div class="motiv__decor"><img src="img/decor.png" alt="" /></div>
+                    <h2 class="motiv__header">Остались вопросы? <br>Наш чат-бот легко на них ответит</h2>
+                </div>
+                <div class="motiv__bottom">
+                    <div class="motiv__bcontent">
+                        <div class="motiv__c2">перейдите в удобный мессенджер, чтобы получить подробную консультацию без ожидания и занятых операторов</div>
+                    </div>
+                    <div class="motiv__bmess"><img src="img/red_arrow_PNG6.png" alt="" /><a href="" style="background-color: #ae44bb"><svg class="svg-sprite">
+                                <use xlink:href="#svgsprite_viber"></use>
+                            </svg></a><a href="" style="background-color: #1fb0da"><svg class="svg-sprite">
+                                <use xlink:href="#svgsprite_telegram_app"></use>
+                            </svg></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="contacts-wrapper">
+            <div class="section section_pbnull">
+                <div class="container">
+                    <div class="contacts">
+                        <div class="contacts__about">
+                            <h2 class="section-header">Как мы работаем</h2>
+                            <ul class="contacts__list">
+                                <li><svg class="svg-sprite">
+                                        <use xlink:href="#svgsprite__phonelink"></use>
+                                    </svg><span>38 (050) 631-67-08</span></li>
+                                <li><svg class="svg-sprite">
+                                        <use xlink:href="#svgsprite_new_post"></use>
+                                    </svg><span>helloprofipol@gmail.com</span></li>
+                                <li><svg class="svg-sprite">
+                                        <use xlink:href="#svgsprite_marker"></use>
+                                    </svg><span>Украина, г. Харьков, проспект Победы 62 В, офис 1</span></li>
+                            </ul>
+                            <div class="contacts-soc">
+                                <div class="contacts-soc__mess"><a href="" style="background-color: #ae44bb"><svg class="svg-sprite">
+                                            <use xlink:href="#svgsprite_viber"></use>
+                                        </svg></a><a href="" style="background-color: #1fb0da"><svg class="svg-sprite">
+                                            <use xlink:href="#svgsprite_telegram_app"></use>
+                                        </svg></a></div>
+                                <div class="contacts-soc__text">Мессенджеры для связи</div>
+                            </div>
+                        </div>
+                        <div class="contacts__map">
+                            <div class="cm"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7276.839338037329!2d24.018323637735143!3d49.84713285220547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sua!4v1600558001237!5m2!1sru!2sua" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__content">
+                    <div class="footer__copy">©2020. Profi-Pol. Все права защищены. </div><a class="footer__dev" href="">Разработка: tkachuk.pro</a>
+                </div>
+            </div>
+        </footer>
+        <script src="js/main.js"></script>
+    </div>
+</body>
+
+</html>

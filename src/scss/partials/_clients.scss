@@ -1,0 +1,44 @@
+.section-clients {
+  background-image: url(../img/polusuhaya-styazhka-pola-e1560920085720.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.clients {
+  display: flex;
+  justify-content: space-betweens;
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+  }
+}
+.clients__item {
+  width: 33.3333333%;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  @include media-breakpoint-down(md) {
+    margin-right: 15px;
+  }
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 40px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  img {
+    max-width: 100%;
+    width: 100%;
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.clients__title {
+  color: #fff;
+  font-weight: 900;
+  line-height: 1.5rem;
+  margin: 30px 0 40px;
+  height: 40px;
+}

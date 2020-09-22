@@ -1,0 +1,114 @@
+.contacts {
+  display: flex;
+  @include media-breakpoint-down(md) {
+    flex-direction: column;
+    text-align: center;
+  }
+  .contacts__list {
+    @include media-breakpoint-down(md) {
+      text-align: left;
+      margin: 30px auto;
+    }
+  }
+}
+.contacts__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 330px;
+  margin: 50px 0;
+  li {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    svg {
+      width: 25px;
+      height: 25px;
+      margin-right: 20px;
+      fill: $color-1;
+    }
+  }
+}
+.contacts-soc__mess {
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  margin-right: 90px;
+  @include media-breakpoint-down(md) {
+    margin-right: 0;
+    margin: 30px auto 0;
+  }
+  a {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 15px #eaecee;
+    margin-right: 55px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    &:last-child {
+      margin-right: 0;
+    }
+    svg {
+      width: 30px;
+      height: 30px;
+      fill: #fff;
+    }
+  }
+}
+.contacts-soc {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  @include media-breakpoint-down(md) {
+    margin-bottom: 50px;
+  }
+}
+.contacts-soc__text {
+  color: $color-1;
+  position: relative;
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+  &::before {
+    content: "";
+    width: 40px;
+    height: 1px;
+    background-color: $color-1;
+    position: absolute;
+    right: calc(100% + 15px);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+.contacts__about {
+  margin-right: 90px;
+  @include media-breakpoint-down(md) {
+    margin-right: 0;
+  }
+}
+.contacts__map {
+  height: 500px;
+}
+.cm {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  @include media-breakpoint-down(md) {
+    position: static;
+    // margin-top: 50px;
+    height: 100%;
+  }
+}
+.contacts-wrapper {
+  position: relative;
+}

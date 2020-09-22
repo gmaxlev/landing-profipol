@@ -1,0 +1,636 @@
+include templates/mixins.pug
+
+<!doctype html>
+html(lang="ru")
+
+    head
+
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        
+        title Title
+
+        link(rel="stylesheet", href="css/main.css")
+        link(rel="stylesheet", href="vendor/animate.min.css")
+        link(rel="stylesheet", href="vendor/fancybox/jquery.fancybox.min.css")
+        link(rel="stylesheet", href="vendor/swiper/swiper.min.css")
+        
+        script(src="vendor/jquery.min.js")
+        script(src="vendor/jquery.validate.min.js")
+        script(src="vendor/axios.min.js")
+        script(src="vendor/jquery.mask.min.js")
+        script(src="vendor/wow.min.js")
+        script(src="vendor/fancybox/jquery.fancybox.min.js")
+        script(src="vendor/swiper/swiper.min.js")
+
+
+        // ===================
+        // LOADING SVG SPRITES
+        // ===================
+        script.
+            $(document).ready(function() {
+                var req = new XMLHttpRequest();
+                req.onload = function (e) {
+                    var svg = document.implementation.createHTMLDocument( '' );
+                    svg.body.innerHTML = e.target.response.replace('<svg ', '<svg style="display: none"');
+                    document.body.appendChild(svg.body.firstElementChild);
+                    svg = null;
+                };
+                req.open('GET', './img/sprite.defs.svg', true);
+                req.responseType = 'text';
+                req.send();
+            });
+        // =======================
+        // END LOADING SVG SPRITES
+        // =======================
+            
+    body
+        
+        .wrapper
+
+            // =================
+            // МОДАЛЬНАЯ ФОРМА 1
+            // =================
+            .modal(data-is-modal)#modal-1
+                .modal__window
+                    .modal__content
+                        .modal-window
+                            img(src="img/decor2.png", alt="").modal-window__decor
+                            .modal-window__content
+                                .modal-window__header Связаться с нами
+                                .modal-window__subheader Заполните, пожалуйста, ваши данные и наш менеджер свяжется с вами в ближайшее время
+                                form.modal-form(data-form-type="1" name="Форма №1")
+                                    .modal-form__input
+                                        .input-text
+                                            input(type="text", name="name", placeholder="Ваше имя")
+                                    .modal-form__input
+                                        .input-text
+                                            input(type="text", name="phone", placeholder="Ваш номер телефона").phone-mask
+                                    .modal-form__input
+                                        .input-text
+                                            input(type="text", name="email", placeholder="Ваш e-mail")
+                                    .modal-form__act
+                                        button.button.button_c Позвонить мне
+                                    .form-send-error
+                                        +svg-sprite('svgsprite_error', 'svg-sprite')
+                                        span Ошибка. Не удалось отправить данные. <br>
+                                            span.form-send-error__text
+                                    .form-send-success
+                                        +svg-sprite('svgsprite_phone', 'svg-sprite')
+                                        span Спасибо!<br> Ожидайте наш звонок.
+                                        .form-send-success__params
+                        .modal-window__close(data-modal-close)
+                            +svg-sprite('svgsprite_close', 'svg-sprite')
+            // =====================
+            // END МОДАЛЬНАЯ ФОРМА 2
+            // =====================
+
+            .intro
+                .container.container_rel
+                    .lines
+                        span
+                        span
+                        span
+                        span
+                        span
+                    .intro__content
+                        header.header.wow.fadeInDown(data-wow-delay="1.3s")
+                            .header__img
+                                img(src="img/logo.png", alt="")
+                            .header__content
+                                .header__messengers
+                                    a(href="")
+                                        +svg-sprite('svgsprite_viber', 'svg-sprite')
+                                    a(href="")
+                                        +svg-sprite('svgsprite_telegram_app', 'svg-sprite')
+                                .header__r
+                                    .header__contacts
+                                        a(href="tel:0955773707").header__tel (095) 577-37-07
+                                        .header__address г. Харьков, проспект Победы 62 В, офис 1
+                                    .header__act
+                                        button.button.button_a(data-modal="modal-1") Позвоните нам
+                        .welcome
+                            h1.welcome__header.wow.fadeInUp(data-wow-delay="0.5s") Полусухая механизированная стяжка
+                            p.welcome__subheader.wow.fadeInUp(data-wow-delay="0.7s") с гарантией до 5 лет от 255 грн/м2 <span>(от 100 м2)</span>
+                        .steps
+                            .steps__item.wow.fadeInUp(data-wow-delay="0.8s")
+                                .steps__num 1
+                                .steps__text Подбираем оптимальную толщину и технологию
+                            .steps__item.wow.fadeInUp(data-wow-delay="0.9s")
+                                .steps__num 2
+                                .steps__text До 250 м2 в день, начало работ в течение 24 часов после замера
+                            .steps__item.wow.fadeInUp(data-wow-delay="1s")
+                                .steps__num 3
+                                .steps__text Гарантия от 1 до 5 лет. Устраняем дефекты за свой счет
+                        .intro__fsw.wow.fadeInUp(data-wow-delay="1.1s") Мы гордимся нашей работой. Работайте с профессионалами
+                        .intro__acts.wow.fadeInUp(data-wow-delay="1.2s")
+                            button.button.button_b(data-modal="modal-1") Рассчитать стоимость
+                            button.button.button_c(data-modal="modal-1") Заказать замер
+            
+            .container
+                .motiv
+                    .motiv__top
+                        .motiv__decor
+                            img(src="img/decor.png", alt="")
+                        h2.motiv__header.wow.fadeInUp(data-wow-delay="0.1s") Рассчитайте стоимость работ за 2 минуты
+                        p.motiv__comment.wow.fadeInUp(data-wow-delay="0.2s") Вы многого не знаете об устройстве стяжки. Мы подберем оптимальную толщину и технологию укладки с учетом всех особенностей объекта:
+                        .motiv__params
+                            .motiv__param.wow.fadeInUp(data-wow-delay="0.3s") Качество основания
+                            .motiv__param.wow.fadeInUp(data-wow-delay="0.4s") Требования по прочности и ровност
+                            .motiv__param.wow.fadeInUp(data-wow-delay="0.5s") Бюджет на проведение работ
+                    .motiv__bottom.wow.fadeInDown(data-wow-delay="0.1s")
+                        .motiv__bcontent
+                            .motiv__c1 Ответьте на 5 вопросов в удобном мессенджере
+                            .motiv__c2 и получите актуальную стоимость с обоснованием расчета
+                        .motiv__bmess
+                            img(src="img/red_arrow_PNG6.png", alt="")
+                            a(href="" style="background-color: #ae44bb")
+                                +svg-sprite('svgsprite_viber', 'svg-sprite')
+                            a(href="" style="background-color: #1fb0da")
+                                +svg-sprite('svgsprite_telegram_app', 'svg-sprite')
+
+            .container
+                .section
+                    h2.section-header.wow.fadeInUp(data-wow-delay="0.1s") Если ровная стяжка без трещин - то только полусухая
+                    p.section-subheader.wow.fadeInUp(data-wow-delay="0.2s") Просто приведем отличия от традиционного способа, чтобы вы поняли ее безальтернативность
+                    .types
+                        .types__item.wow.fadeInUp(data-wow-delay="0.1s")
+                            .t1
+                                .t1__img
+                                    img(src="img/6-14.png", alt="")
+                                .t1__content
+                                    .t1_head Мокрая стяжка
+                                    ul.t1__list
+                                        li до 50м2
+                                        li нужно
+                                        li через 14 дней
+                                        li через 72 часа
+                                        li есть
+                        .types__item.wow.fadeInDown(data-wow-delay="0.2s")
+                            .t2
+                                .t2__img
+                                    img(src="img/icons8_scales.png", alt="")
+                                .t2__content
+                                    ul.t2__list
+                                        li Максимальный объем работ в день
+                                        li Дополнительное выравнивание
+                                        li Дополнительное выравнивание
+                                        li Можно ходить
+                                        li Возможность затопления нижнего этажа
+                        .types__item.wow.fadeInUp(data-wow-delay="0.1s")
+                            .t3
+                                .t3__img
+                                    img(src="img/6-14.png", alt="")
+                                .t3__content
+                                    .t3_head Сухая стяжка
+                                    ul.t3__list
+                                        li до 250м2
+                                        li не нужно
+                                        li через 8 дней
+                                        li через 12 часа
+                                        li исключена
+
+            .section.section-clients
+                .container.container_bl
+                    .lines
+                        span
+                        span
+                        span
+                        span
+                        span
+                    .content
+                        h2.section-header.section-header_w.wow.fadeInUp(data-wow-delay="0.1s") Кто обращается в ProfiPol?
+                        p.section-subheader.section-subheader_w.wow.fadeInUp(data-wow-delay="0.2s") Каждый клиент получает в нашем лице решение проблем и партнера, на которого можно положиться
+                        .clients
+                            .clients__item
+                                .clients__top
+                                    img(src="img/100c3341ad8ab6a290e74be946d9ca5d3846b4cc.png", alt="").wow.zoomIn(data-wow-delay="0.1s")
+                                    .clients__title.wow.fadeInUp(data-wow-delay="0.2s") Застройщики, прорабы
+                                .clients__bottom
+                                    .clients__list
+                                        ul.list-check
+                                            li.wow.fadeInUp(data-wow-delay="0.1s") экономия времени
+                                            li.wow.fadeInUp(data-wow-delay="0.2s") качественная работа с соблюдением всех сроков и гарантией
+                                            li.wow.fadeInUp(data-wow-delay="0.3s") выгодные условия для сотрудничества
+                            .clients__item
+                                .clients__top
+                                    img(src="img/6RieltorRabota-rieltora-zaklyuchaetsya-v-soprovozhdenii-operatsij-s-nedvizhimostyu.png", alt="").wow.zoomIn(data-wow-delay="0.2s")
+                                    .clients__title.wow.fadeInUp(data-wow-delay="0.2s") Владельцы домов и квартир
+                                .clients__bottom
+                                    .clients__list
+                                        ul.list-check
+                                            li.wow.fadeInUp(data-wow-delay="0.1s") ровная поверхность без трещин и неровностей
+                                            li.wow.fadeInUp(data-wow-delay="0.2s") аккуратная работа с обязательной уборкой
+                                            li.wow.fadeInUp(data-wow-delay="0.3s") профессиональная консультация по технологии работ
+                            .clients__item
+                                .clients__top
+                                    img(src="img/business-person-png.png", alt="").wow.zoomIn(data-wow-delay="0.3s")
+                                    .clients__title.wow.fadeInUp(data-wow-delay="0.3s") Владельцы коммерции и нежилых помещений
+                                .clients__bottom
+                                    .clients__list
+                                        ul.list-check
+                                            li.wow.fadeInUp(data-wow-delay="0.1s") решение под любой бюджет
+                                            li.wow.fadeInUp(data-wow-delay="0.2s") идеальное соотношение цена/качество
+                                            li.wow.fadeInUp(data-wow-delay="0.3s") гарантия длительной службы поверхности
+
+            .section
+                .container
+                    h2.section-header.wow.fadeInUp(data-wow-delay="0.1s") Секреты качества ProfiPol
+                    p.section-subheader.wow.fadeInUp(data-wow-delay="0.2s") Для нас стяжка - такой же важный элемент здания, как стены или плиты перекрытия
+                    .secrets
+                        .secrets__d
+                            span
+                            span
+                        .secrets__item.wow.fadeInUp(data-wow-delay="0.1s")
+                            .secrets__top
+                                .secrets__icon
+                                    img(src="img/icons8_calendar.png", alt="")
+                                .secrets__title 17 лет опыта
+                            .secrets__desc Занимаемся полами с 2007 года. Последние 10 лет - стяжкой пола.
+                        .secrets__item.wow.fadeInUp(data-wow-delay="0.2s")
+                            .secrets__top
+                                .secrets__icon
+                                    img(src="img/icons8_development_skill.png", alt="")
+                                .secrets__title Опытные мастера
+                            .secrets__desc Без вредных зависимостей, прошедшие внутренее обучение
+                        .secrets__item.wow.fadeInUp(data-wow-delay="0.3s")
+                            .secrets__top
+                                .secrets__icon
+                                    img(src="img/icons8_gold_medal.png", alt="")
+                                .secrets__title Гарантия качества
+                            .secrets__desc В случае возникновения дефектов – устраняем в сжатые сроки за свой счет
+            .section.section-objects.section_pbnull
+                .container.container_bl
+                    .lines
+                        span
+                        span
+                        span
+                        span
+                        span
+                    .content
+                        h2.section-header.section-header_w.wow.fadeInUp(data-wow-delay="0.1s") Главный секрет - <br>прислушиваться к вам
+                        p.section-subheader.section-subheader_w.wow.fadeInUp(data-wow-delay="0.2s") Под каждый объект мы подбираем оптимальный вид стяжки. <br>В отличие от других, которые делают одно и то же в гараже и частном доме
+                        .objects
+                            .objects__item
+                                .objects__title.wow.fadeInUp(data-wow-delay="0.1s") Тонкослойная
+                                .objects__bottom
+                                    .objects__image(style="background-image: url(img/0.png)").wow.zoomIn(data-wow-delay="0.1s")
+                                        .objects__size
+                                            b от
+                                            span 1 см
+                                    .objects__price.wow.fadeInUp(data-wow-delay="0.1s") 250-290 грн
+                            .objects__item
+                                .objects__title.wow.fadeInUp(data-wow-delay="0.2s") Стандартная
+                                .objects__bottom
+                                    .objects__image(style="background-image: url(img/0.png)").wow.zoomIn(data-wow-delay="0.2s")
+                                        .objects__size
+                                            span 5-10
+                                            b см
+                                    .objects__price.wow.fadeInUp(data-wow-delay="0.2s") 255-300 грн
+                            .objects__item
+                                .objects__title.wow.fadeInUp(data-wow-delay="0.3s") Премиум
+                                .objects__bottom
+                                    .objects__image(style="background-image: url(img/0.png)").wow.zoomIn(data-wow-delay="0.3s")
+                                        .objects__size
+                                            span 5-10
+                                            b см
+                                    .objects__price.wow.fadeInUp(data-wow-delay="0.3s") 280-330 грн
+                            .objects__item
+                                .objects__title.wow.fadeInUp(data-wow-delay="0.4s") Премиум с гранотсевом
+                                .objects__bottom
+                                    .objects__image(style="background-image: url(img/0.png)").wow.zoomIn(data-wow-delay="0.4s")
+                                        .objects__size
+                                            b от
+                                            span 10 см
+                                    .objects__price.wow.fadeInUp(data-wow-delay="0.4s") 300-350 грн
+                        .addworks-header.wow.fadeInUp(data-wow-delay="0.1s") Дополнительные работы
+                        .addworks
+                            .addworks__content
+                                ul.list-check
+                                    li.wow.fadeInUp(data-wow-delay="0.1s") Укладка армировочной сетки
+                                    li.wow.fadeInUp(data-wow-delay="0.2s") Звукоизоляция изолоном
+                                    li.wow.fadeInUp(data-wow-delay="0.3s") Утепление  вспененным полистеролом
+                                ul.list-check
+                                    li.wow.fadeInUp(data-wow-delay="0.4s") Полимерное покрытие
+                                    li.wow.fadeInUp(data-wow-delay="0.5s") Нивелир масса
+                                    li.wow.fadeInUp(data-wow-delay="0.6s") А также укладка напольных покрытий <br><span>(ламинат, плитка, ковровое, линолеум)</span>
+                            .addworks__act.wow.fadeInUp(data-wow-delay="0.7s")
+                                button.button.button_c(data-modal="modal-1") Заказать замер
+            .container
+                .motiv
+                    .motiv__top
+                        .motiv__decor
+                            img(src="img/decor.png", alt="")
+                        h2.motiv__header.wow.fadeInUp(data-wow-delay="0.1s") Не знаете <br>какую стяжку выбрать?
+                        p.motiv__comment.wow.fadeInUp(data-wow-delay="0.2s") Без должного опыта это очень сложно. Мы подберем оптимальную толщину и технологию укладки с учетом всех особенностей объекта:
+                        .motiv__params
+                            .motiv__param.wow.fadeInUp(data-wow-delay="0.1s") Качество основания
+                            .motiv__param.wow.fadeInUp(data-wow-delay="0.2s") Требования по прочности и ровност
+                            .motiv__param.wow.fadeInUp(data-wow-delay="0.3s") Бюджет на проведение работ
+                    .motiv__bottom.wow.fadeInDown(data-wow-delay="0.1s")
+                        .motiv__bcontent
+                            .motiv__c1 Ответьте на 5 вопросов в удобном мессенджере
+                            .motiv__c2 и получите актуальную стоимость с обоснованием расчета
+                        .motiv__bmess
+                            img(src="img/red_arrow_PNG6.png", alt="")
+                            a(href="" style="background-color: #ae44bb")
+                                +svg-sprite('svgsprite_viber', 'svg-sprite')
+                            a(href="" style="background-color: #1fb0da")
+                                +svg-sprite('svgsprite_telegram_app', 'svg-sprite')
+            
+            .section
+                .container
+                    h2.section-header.wow.fadeInUp(data-wow-delay="0.1s") Так должна выглядеть стяжка
+                    p.section-subheader.wow.fadeInUp(data-wow-delay="0.2s") Мы делаем поверхность идеально ровной - на нее можно ложить даже ламинат, без дополнительной подготовки!
+                    .slider-objects.wow.fadeIn(data-wow-delay="0.1s")
+                        .swiper-container#slider-objects
+                            .slider-objects__nav
+                                div
+                                    button.nav.nav_prev#slider-objects-prev
+                                        +svg-sprite('svgsprite_arrow_pointing_down', 'svg-sprite')
+                                div
+                                    button.nav.nav_next#slider-objects-next
+                                        +svg-sprite('svgsprite_arrow_pointing_down', 'svg-sprite')
+                            .swiper-wrapper
+                                .swiper-slide
+                                    .slider-objects__item(style="background-image: url(img/object.png)")
+                                        a(href="https://www.youtube.com/watch?v=6lzmVhWpVos" data-fancybox="gallery").playvideo
+                                .swiper-slide
+                                    .slider-objects__item(style="background-image: url(img/object.png)")
+                                        a(href="https://www.youtube.com/watch?v=6lzmVhWpVos" data-fancybox="gallery").playvideo
+                                .swiper-slide
+                                    .slider-objects__item(style="background-image: url(img/object.png)")
+                                        a(href="https://www.youtube.com/watch?v=6lzmVhWpVos" data-fancybox="gallery").playvideo
+                    .section-header-act
+                        button.button.button_c(data-modal="modal-1") Заказать замер
+
+            .section.section-faq
+                .container.container_bl
+                    .lines
+                        span
+                        span
+                        span
+                        span
+                        span
+                    .content
+                        h2.section-header.section-header_w.wow.fadeInUp(data-wow-delay="0.1s") Ответы на ваши вопросы
+                        p.section-subheader.section-subheader_w.wow.fadeInUp(data-wow-delay="0.2s") Вы всегда можете получить подробную консультацию в чате
+                        .faq-soc.wow.fadeInUp(data-wow-delay="0.3s")
+                            a(href="" style="background-color: #ae44bb")
+                                +svg-sprite('svgsprite_viber', 'svg-sprite')
+                            a(href="" style="background-color: #1fb0da")
+                                +svg-sprite('svgsprite_telegram_app', 'svg-sprite')
+                        .faq.wow.fadeIn(data-wow-delay="0.1s")
+                            .swiper-container#slider-faq
+                                .swiper-wrapper
+                                    .swiper-slide
+                                        .faq__item
+                                            .faq__title Когда вы сможете приехать?
+                                            .faq__about Прораб с вами свяжется в течении часа. приедет к вам в удобное время
+                                    .swiper-slide
+                                        .faq__item
+                                            .faq__title Когда вы сможете приступить к работе?
+                                            .faq__about На следующий день после осмотра объекта прорабом, в зависимости от графика работ.
+                                    .swiper-slide
+                                        .faq__item
+                                            .faq__title Когда можно продолжать выполнения работ на боъекте?
+                                            .faq__about Прораб с вами свяжется в течении часа. приедет к вам в удобное время
+                                    .swiper-slide
+                                        .faq__item
+                                            .faq__title Когда можно продолжать выполнения работ на боъекте?
+                                            .faq__about Прораб с вами свяжется в течении часа. приедет к вам в удобное время
+                                    .swiper-slide
+                                        .faq__item
+                                            .faq__title Когда вы сможете приступить к работе?
+                                            .faq__about На следующий день после осмотра объекта прорабом, в зависимости от графика работ.
+                                    .swiper-slide
+                                        .faq__item
+                                            .faq__title Когда вы сможете приехать?
+                                            .faq__about Прораб с вами свяжется в течении часа. приедет к вам в удобное время
+                                    .swiper-slide
+                                        .faq__item
+                                            .faq__title Когда вы сможете приехать?
+                                            .faq__about Прораб с вами свяжется в течении часа. приедет к вам в удобное время
+                                    .swiper-slide
+                                        .faq__item
+                                            .faq__title Когда вы сможете приступить к работе?
+                                            .faq__about На следующий день после осмотра объекта прорабом, в зависимости от графика работ.
+                                    .swiper-slide
+                                        .faq__item
+                                            .faq__title Когда можно продолжать выполнения работ на боъекте?
+                                            .faq__about Прораб с вами свяжется в течении часа. приедет к вам в удобное время
+                                    .swiper-slide
+                                        .faq__item
+                                            .faq__title Когда можно продолжать выполнения работ на боъекте?
+                                            .faq__about Прораб с вами свяжется в течении часа. приедет к вам в удобное время
+                                    .swiper-slide
+                                        .faq__item
+                                            .faq__title Когда вы сможете приступить к работе?
+                                            .faq__about На следующий день после осмотра объекта прорабом, в зависимости от графика работ.
+                                    .swiper-slide
+                                        .faq__item
+                                            .faq__title Когда вы сможете приехать?
+                                            .faq__about Прораб с вами свяжется в течении часа. приедет к вам в удобное время
+                        .faq-nav
+                            button.nav.nav_prev#slider-faq-prev
+                                +svg-sprite('svgsprite_arrow_pointing_down', 'svg-sprite')
+                            button.nav.nav_next#slider-faq-next
+                                +svg-sprite('svgsprite_arrow_pointing_down', 'svg-sprite')
+            .section
+                .container
+                    h2.section-header.wow.fadeInUp(data-wow-delay="0.1s") Как мы работаем
+                    p.section-subheader.wow.fadeInUp(data-wow-delay="0.2s") Вы всегда можете получить подробную консультацию в чате
+                    .stepswork
+                        .stepswork__item.wow.fadeInLeft(data-wow-delay="0.1s")
+                            .stepswork__num
+                                img(src="img/1.png", alt="")
+                            .stepswork__title
+                                span Оставьте заявку
+                            .stepswork__desc
+                                .stepswork__t Инженер свяжется с вами и уточнит все детали:
+                                ul.list-check
+                                    li площадь всего помещения
+                                    li толщина стяжки
+                                    li наличие и толщина подстилающих слоев - пенопласта, полистиролбетона, пенобетона
+                                    li готовность всего помещения
+                                p На момент укладки пола обязательно должны быть сделаны все скрытые работы - проложены сантехнические трубы и электрика
+                        .stepswork__item.wow.fadeInRight(data-wow-delay="0.1s")
+                            .stepswork__num
+                                img(src="img/2.png", alt="")
+                            .stepswork__title
+                                span Замер объекта
+                            .stepswork__desc Инженер выезжает на объект и делает необходимые замеры: площадь рулеткой, а толщину - нивелиром
+                        .stepswork__item.wow.fadeInLeft(data-wow-delay="0.1s")
+                            .stepswork__num
+                                img(src="img/3.png", alt="")
+                            .stepswork__title
+                                span Расчет стоимости
+                            .stepswork__desc Обязательно подписываем договор и соблюдаем все сроки и указанный бюджет
+                        .stepswork__item.wow.fadeInRight(data-wow-delay="0.1s")
+                            .stepswork__num
+                                img(src="img/4.png", alt="")
+                            .stepswork__title
+                                span Внесение аванса
+                            .stepswork__desc В размере 100% от стоимости материалов
+                        .stepswork__item.wow.fadeInLeft(data-wow-delay="0.1s")
+                            .stepswork__num
+                                img(src="img/5.png", alt="")
+                            .stepswork__title
+                                span Устройство стяжки
+                            .stepswork__desc А также проведение остальных согласованных работ
+                        .stepswork__item.wow.fadeInRight(data-wow-delay="0.1s")
+                            .stepswork__num
+                                img(src="img/6.png", alt="")
+                            .stepswork__title
+                                span Оплата работ
+                            .stepswork__desc Оплата работ
+                    
+                    .stepswork-act
+                        button.button.button_c(data-modal="modal-1") Заказать размер
+
+            .section.weare-section.section_pbnull
+                .container.container_bl
+                    .lines
+                        span
+                        span
+                        span
+                        span
+                        span
+                    .content
+                        h2.section-header.section-header_w.wow.fadeInUp(data-wow-delay="0.1s") «Строители нового поколения»
+                        p.section-subheader.section-subheader_w.wow.fadeInUp(data-wow-delay="0.2s") Так нас называют заказчики за ответственность, пунктуальность и отсутствие вредных привычек
+                        .weare
+                            .weare__item.wow.fadeInUp(data-wow-delay="0.1s")
+                                .weare__img
+                                    img(src="img/365a4a0d95bbd2b0977c82e2ea65897f0e26cde2.png", alt="")
+                                .weare__name Федор Дранищев
+                                .weare__prof Директор
+                            .weare__item.wow.fadeInUp(data-wow-delay="0.2s")
+                                .weare__img
+                                    img(src="img/smiling-face-confidence-post-asian-man-with-beard_39688-344.png", alt="")
+                                .weare__name Константин Егоров
+                                .weare__prof Бухгалтер
+                            .weare__item.wow.fadeInUp(data-wow-delay="0.3s")
+                                .weare__img
+                                    img(src="img/365a4a0d95bbd2b0977c82e2ea65897f0e26cde2.png", alt="")
+                                .weare__name Федор Дранищев
+                                .weare__prof Директор
+                            .weare__item.wow.fadeInUp(data-wow-delay="0.4s")
+                                .weare__img
+                                    img(src="img/smiling-face-confidence-post-asian-man-with-beard_39688-344.png", alt="")
+                                .weare__name Константин Егоров
+                                .weare__prof Бухгалтер
+                        .weare-slider-wrapper.wow.fadeIn(data-wow-delay="0.1s")
+                            .weare-slider
+                                .weare-slider-nav
+                                    div
+                                        button.nav.nav_prev#slider-we-prev
+                                            +svg-sprite('svgsprite_arrow_pointing_down', 'svg-sprite')
+                                    div
+                                        button.nav.nav_next#slider-we-next
+                                            +svg-sprite('svgsprite_arrow_pointing_down', 'svg-sprite')
+                                .swiper-container#slider-we
+                                    .swiper-wrapper
+                                        .swiper-slide
+                                            .weare-slider__item
+                                                .weare-slider__iwp
+                                                    .weare-slider__img
+                                                        img(src="img/305e7d45f04e1b79-1024x682.jpg", alt="")
+                                                    .weare-slider__prof Прораб
+                                                .weare-slider__about
+                                                    .weare-slider__nwd
+                                                        .weare-slider__name Александр
+                                                        .weare-slider__date 
+                                                            +svg-sprite('svgsprite_calendar', 'svg-sprite')
+                                                            span 24.07.20
+                                                    p.weare-slider__text Приятно было работать с ребятами, сделали за один день 86 метров. Все как договаривались-сроки, цена, качество. Теперь смело рекомендую своим друзьям
+                                        .swiper-slide
+                                            .weare-slider__item
+                                                .weare-slider__iwp
+                                                    .weare-slider__img
+                                                        img(src="img/305e7d45f04e1b79-1024x682.jpg", alt="")
+                                                    .weare-slider__prof Прораб
+                                                .weare-slider__about
+                                                    .weare-slider__nwd
+                                                        .weare-slider__name Александр 2
+                                                        .weare-slider__date 
+                                                            +svg-sprite('svgsprite_calendar', 'svg-sprite')
+                                                            span 24.07.20
+                                                    p.weare-slider__text Приятно было работать с ребятами, сделали за один день 86 метров. Все как договаривались-сроки, цена, качество. Теперь смело рекомендую своим друзьям
+                                        .swiper-slide
+                                            .weare-slider__item
+                                                .weare-slider__iwp
+                                                    .weare-slider__img
+                                                        img(src="img/305e7d45f04e1b79-1024x682.jpg", alt="")
+                                                    .weare-slider__prof Прораб
+                                                .weare-slider__about
+                                                    .weare-slider__nwd
+                                                        .weare-slider__name Александр 3
+                                                        .weare-slider__date 
+                                                            +svg-sprite('svgsprite_calendar', 'svg-sprite')
+                                                            span 24.07.20
+                                                    p.weare-slider__text Приятно было работать с ребятами, сделали за один день 86 метров. Все как договаривались-сроки, цена, качество. Теперь смело рекомендую своим друзьям
+                                        .swiper-slide
+                                            .weare-slider__item
+                                                .weare-slider__iwp
+                                                    .weare-slider__img
+                                                        img(src="img/305e7d45f04e1b79-1024x682.jpg", alt="")
+                                                    .weare-slider__prof Прораб
+                                                .weare-slider__about
+                                                    .weare-slider__nwd
+                                                        .weare-slider__name Александр 4
+                                                        .weare-slider__date 
+                                                            +svg-sprite('svgsprite_calendar', 'svg-sprite')
+                                                            span 24.07.20
+                                                    p.weare-slider__text Приятно было работать с ребятами, сделали за один день 86 метров. Все как договаривались-сроки, цена, качество. Теперь смело рекомендую своим друзьям
+            .container
+                .motiv.motiv_accent
+                    .motiv__top
+                        .motiv__decor
+                            img(src="img/decor.png", alt="")
+                        h2.motiv__header Остались вопросы? <br>Наш чат-бот легко на них ответит
+                    .motiv__bottom
+                        .motiv__bcontent
+                            .motiv__c2 перейдите в удобный мессенджер, чтобы получить подробную консультацию без ожидания и занятых операторов
+                        .motiv__bmess
+                            img(src="img/red_arrow_PNG6.png", alt="")
+                            a(href="" style="background-color: #ae44bb")
+                                +svg-sprite('svgsprite_viber', 'svg-sprite')
+                            a(href="" style="background-color: #1fb0da")
+                                +svg-sprite('svgsprite_telegram_app', 'svg-sprite')
+
+            .contacts-wrapper
+                .section.section_pbnull
+                    .container
+                        .contacts
+                            .contacts__about
+                                h2.section-header Как мы работаем
+                                ul.contacts__list
+                                    li
+                                        +svg-sprite('svgsprite__phonelink', 'svg-sprite')
+                                        span 38 (050) 631-67-08
+                                    li
+                                        +svg-sprite('svgsprite_new_post', 'svg-sprite')
+                                        span helloprofipol@gmail.com
+                                    li
+                                        +svg-sprite('svgsprite_marker', 'svg-sprite')
+                                        span Украина, г. Харьков, проспект Победы 62 В, офис 1
+                                .contacts-soc
+                                    .contacts-soc__mess
+                                        a(href="" style="background-color: #ae44bb")
+                                            +svg-sprite('svgsprite_viber', 'svg-sprite')
+                                        a(href="" style="background-color: #1fb0da")
+                                            +svg-sprite('svgsprite_telegram_app', 'svg-sprite')
+                                    .contacts-soc__text Мессенджеры для связи
+                            .contacts__map
+                                .cm
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7276.839338037329!2d24.018323637735143!3d49.84713285220547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sua!4v1600558001237!5m2!1sru!2sua" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+            footer.footer
+                .container
+                    .footer__content
+                        .footer__copy ©2020. Profi-Pol. Все права защищены.    
+                        a(href="").footer__dev Разработка: tkachuk.pro
+
+            script(src="js/main.js")

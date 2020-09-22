@@ -1,0 +1,37 @@
+.welcome {
+  position: relative;
+  z-index: 2;
+}
+.welcome__header {
+  font-size: 3.375rem;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 900px;
+  font-weight: 900;
+  @include media-breakpoint-down(sm) {
+    font-size: 3rem;
+  }
+  @include media-breakpoint-down(xs) {
+    font-size: 1.6rem;
+    line-height: 1.4;
+  }
+}
+.welcome__subheader {
+  font-size: 1.625rem;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  margin-top: 25px;
+  @include media-breakpoint-down(xs) {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+  }
+  span {
+    font-size: 1.125rem;
+    color: #747b87;
+    @include media-breakpoint-down(xs) {
+      font-size: 1.2rem;
+    }
+  }
+}

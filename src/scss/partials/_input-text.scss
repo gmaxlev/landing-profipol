@@ -1,0 +1,16 @@
+.input-text {
+  display: inline-flex;
+  input {
+    width: 100%;
+    outline: none;
+    border: 0;
+    outline: none;
+    border-bottom: 2px solid #a6a6a6;
+    font-weight: 600;
+    color: #1b191d;
+    padding: 10px 0;
+    &::placeholder {
+      color: #1b191d;
+    }
+  }
+}
